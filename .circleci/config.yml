@@ -234,7 +234,7 @@ jobs:
       - store_artifacts:
           path: build/
 
-  dyanamic-test-spit:
+  dynamic-test-split:
     # Remove if parallelism is not desired
     parallelism: 4
     environment:
@@ -287,6 +287,6 @@ workflows:
     - static-test-split:
         requires:
           - build
-    - dynamic-tes-split:
+    - dynamic-test-split:
         requires:
           - build
