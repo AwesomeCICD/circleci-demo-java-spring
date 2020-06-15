@@ -179,11 +179,12 @@ jobs:
 
   static-test-split:
     # Remove if parallelism is not desired
-    parallelism: 4
+    parallelism: 7
+    resource_class: medium+
     environment:
       # Configure the JVM and Gradle to avoid OOM errors
       _JAVA_OPTIONS: "-Xmx3g"
-      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
+      GRADLE_OPTS: "-Dorg.gradle.daemon=true -Dorg.gradle.workers.max=3"
     docker:
       - image: circleci/openjdk:11.0.3-jdk-stretch
       - image: circleci/postgres:12-alpine
@@ -236,11 +237,12 @@ jobs:
 
   dynamic-test-split:
     # Remove if parallelism is not desired
-    parallelism: 4
+    parallelism: 7
+    resource_class: medium+
     environment:
       # Configure the JVM and Gradle to avoid OOM errors
       _JAVA_OPTIONS: "-Xmx3g"
-      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
+      GRADLE_OPTS: "-Dorg.gradle.daemon=true -Dorg.gradle.workers.max=3"
     docker:
       - image: circleci/openjdk:11.0.3-jdk-stretch
       - image: circleci/postgres:12-alpine
