@@ -179,7 +179,7 @@ jobs:
 
   static-test-split:
     # Remove if parallelism is not desired
-    parallelism: 4
+    parallelism: 2
     resource_class: medium+
     environment:
       # Configure the JVM and Gradle to avoid OOM errors
@@ -237,7 +237,7 @@ jobs:
 
   dynamic-test-split:
     # Remove if parallelism is not desired
-    parallelism: 4
+    parallelism: 2
     resource_class: medium+
     environment:
       # Configure the JVM and Gradle to avoid OOM errors
