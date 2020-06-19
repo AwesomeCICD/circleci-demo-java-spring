@@ -61,7 +61,7 @@ jobs:
             CLASSNAMES=$(circleci tests glob "**/*.java" \
             | cut -c 1- | sed 's@/@.@g' \
             | sed 's/.\{5\}$//' \
-            | circleci tests split --split-by=timings --timings-type=classname)
+            | circleci tests split)
             cd ../../..
             # Format the arguments to "./gradlew test"
             GRADLE_ARGS=$(echo $CLASSNAMES | awk '{for (i=1; i<=NF; i++) print "--tests",$i}')
@@ -111,7 +111,7 @@ jobs:
           at: .
 
       - dynamic-split/test:
-          split-command: cd src/test/java && find -name '*.java' -execdir basename {} .java ';' | circleci tests split --split-by=timings --timings-type=classname
+          split-command: cd src/test/java && find -name '*.java' -execdir basename {} .java ';' | circleci tests split
           test-command: ./gradlew test --tests @
           work-stealing: true
 
